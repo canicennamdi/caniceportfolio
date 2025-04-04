@@ -1,11 +1,603 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title></title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canice - Design Portfolio</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#4D6A57',secondary:'#8BA989'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Montserrat', sans-serif;
+}
+.heading-font {
+font-family: 'Playfair Display', serif;
+}
+.portfolio-item:hover .portfolio-overlay {
+opacity: 1;
+}
+.portfolio-item:hover img {
+transform: scale(1.05);
+}
+input[type="checkbox"] {
+appearance: none;
+-webkit-appearance: none;
+height: 20px;
+width: 20px;
+background-color: #fff;
+border: 2px solid #4D6A57;
+border-radius: 4px;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+input[type="checkbox"]:checked {
+background-color: #4D6A57;
+}
+input[type="checkbox"]:checked::after {
+content: "✓";
+color: white;
+font-size: 14px;
+}
+.nav-link {
+position: relative;
+}
+.nav-link::after {
+content: "";
+position: absolute;
+width: 0;
+height: 2px;
+bottom: -4px;
+left: 0;
+background-color: #4D6A57;
+transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+width: 100%;
+}
+.nav-link.active::after {
+width: 100%;
+}
+</style>
 </head>
-<body>
-    <h1>A great title</h1>
-    <h1>My name is canice ngumah</h1>
+<body class="bg-white">
+<!-- Header -->
+<header class="w-full py-6 px-8 flex justify-between items-center bg-white sticky top-0 z-50 shadow-sm">
+<div class="flex items-center">
+<img src="https://static.readdy.ai/image/4f318f13ec4a7d637a19f008589bb679/352601aa53fb6c3cce8baf842f7d3cc0.png" alt="Canice" class="h-12">
+</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a href="#home" class="nav-link active text-gray-800 hover:text-[#4D6A57] transition-colors">Home</a>
+<a href="#about" class="nav-link text-gray-800 hover:text-[#4D6A57] transition-colors">About</a>
+<a href="#portfolio" class="nav-link text-gray-800 hover:text-[#4D6A57] transition-colors">Portfolio</a>
+<a href="#contact" class="nav-link text-gray-800 hover:text-[#4D6A57] transition-colors">Contact</a>
+<button class="bg-[#4D6A57] text-white px-6 py-2 !rounded-button hover:bg-opacity-90 transition-all whitespace-nowrap">Let's Talk</button>
+</nav>
+<div class="md:hidden w-10 h-10 flex items-center justify-center text-gray-800">
+<i class="ri-menu-line ri-xl"></i>
+</div>
+</header>
+<!-- Hero Section -->
+<section id="home" class="relative w-full min-h-[80vh] flex items-center overflow-hidden" style="background-image: url('https://public.readdy.ai/ai/img_res/bf6b887536ad96fcd8e7ffbf255085f6.jpg'); background-size: cover; background-position: center;">
+<div class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent"></div>
+<div class="container mx-auto px-8 relative z-10 w-full">
+<div class="max-w-2xl">
+<h1 class="text-5xl md:text-7xl font-bold mb-6">
+<span class="block mb-2">Hi!</span>
+<span class="block">I am <span class="text-[#4D6A57]">Canice</span>,</span>
+</h1>
+<h2 class="text-2xl md:text-3xl mb-8 leading-relaxed">
+and I love <span class="text-primary font-semibold">colours</span>,
+<span class="text-secondary font-semibold">layout</span> and
+<span class="heading-font italic font-bold">typeface</span>.
+</h2>
+<div class="flex flex-col sm:flex-row gap-4 mt-8">
+<button class="bg-[#4D6A57] text-white px-8 py-3 !rounded-button hover:bg-opacity-90 transition-all whitespace-nowrap text-lg font-medium">View My Work</button>
+<button class="border-2 border-[#4D6A57] text-[#4D6A57] px-8 py-3 !rounded-button hover:bg-[#4D6A57] hover:text-white transition-all whitespace-nowrap text-lg font-medium">Contact Me</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Introduction Banner -->
+<section class="w-full py-16 bg-gradient-to-r from-[#F2F1EC] to-[#8BA989]">
+<div class="container mx-auto px-8">
+<div class="max-w-4xl mx-auto text-center">
+<h2 class="text-3xl md:text-4xl font-bold mb-8 leading-tight">Unleashing creativity through design, captivating web experiences, and insightful data analytics!</h2>
+<div class="flex flex-wrap justify-center gap-12 mt-12">
+<div class="flex flex-col items-center">
+<div class="w-20 h-20 flex items-center justify-center bg-[#4D6A57] bg-opacity-20 rounded-full mb-4">
+<i class="ri-palette-line ri-2x text-[#4D6A57]"></i>
+</div>
+<h3 class="font-semibold text-lg">Design</h3>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-20 h-20 flex items-center justify-center bg-[#8BA989] bg-opacity-50 rounded-full mb-4">
+<i class="ri-code-s-slash-line ri-2x text-[#4D6A57]"></i>
+</div>
+<h3 class="font-semibold text-lg">Web Development</h3>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-20 h-20 flex items-center justify-center bg-[#F2F1EC] bg-opacity-70 rounded-full mb-4">
+<i class="ri-bar-chart-line ri-2x text-[#4D6A57]"></i>
+</div>
+<h3 class="font-semibold text-lg">Data Analytics</h3>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Portfolio Preview -->
+<section id="portfolio" class="w-full py-20 bg-white">
+<div class="container mx-auto px-8">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">My Portfolio</h2>
+<p class="text-lg text-gray-600 max-w-2xl mx-auto">A dynamic online portfolio that highlights my creative journey and showcases my work!</p>
+</div>
+<div class="mb-8 flex flex-wrap justify-center gap-4">
+<button class="bg-[#4D6A57] text-white px-6 py-2 !rounded-button whitespace-nowrap">All Projects</button>
+<button class="bg-white text-gray-800 border border-gray-300 px-6 py-2 !rounded-button hover:bg-gray-50 whitespace-nowrap">Web Design</button>
+<button class="bg-white text-gray-800 border border-gray-300 px-6 py-2 !rounded-button hover:bg-gray-50 whitespace-nowrap">UI/UX</button>
+<button class="bg-white text-gray-800 border border-gray-300 px-6 py-2 !rounded-button hover:bg-gray-50 whitespace-nowrap">Branding</button>
+<button class="bg-white text-gray-800 border border-gray-300 px-6 py-2 !rounded-button hover:bg-gray-50 whitespace-nowrap">Data Visualization</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Portfolio Item 1 -->
+<div class="portfolio-item group rounded-lg overflow-hidden shadow-md relative">
+<img src="https://public.readdy.ai/ai/img_res/b0da1cded05abaf79dd7ec567ddde912.jpg" alt="E-commerce Website Design" class="w-full h-64 object-cover object-top transition-transform duration-500">
+<div class="portfolio-overlay absolute inset-0 bg-[#4D6A57] bg-opacity-80 flex flex-col justify-center items-center p-6 opacity-0 transition-opacity duration-300">
+<h3 class="text-white text-xl font-bold mb-2">Luxe Boutique</h3>
+<p class="text-white text-center mb-4">E-commerce website design with focus on user experience and conversion optimization</p>
+<button class="bg-white text-[#4D6A57] px-5 py-2 !rounded-button hover:bg-opacity-90 transition-all whitespace-nowrap">View Project</button>
+</div>
+</div>
+<!-- Portfolio Item 2 -->
+<div class="portfolio-item group rounded-lg overflow-hidden shadow-md relative">
+<img src="https://public.readdy.ai/ai/img_res/8eba60121f7857a06c3833b27417475d.jpg" alt="Finance App UI Design" class="w-full h-64 object-cover object-top transition-transform duration-500">
+<div class="portfolio-overlay absolute inset-0 bg-[#4D6A57] bg-opacity-80 flex flex-col justify-center items-center p-6 opacity-0 transition-opacity duration-300">
+<h3 class="text-white text-xl font-bold mb-2">FinTrack Pro</h3>
+<p class="text-white text-center mb-4">Mobile app UI/UX design for personal finance management</p>
+<button class="bg-white text-[#4D6A57] px-5 py-2 !rounded-button hover:bg-opacity-90 transition-all whitespace-nowrap">View Project</button>
+</div>
+</div>
+<!-- Portfolio Item 3 -->
+<div class="portfolio-item group rounded-lg overflow-hidden shadow-md relative">
+<img src="https://public.readdy.ai/ai/img_res/e7eba49f352abc05b841ef0547c52146.jpg" alt="Brand Identity Design" class="w-full h-64 object-cover object-top transition-transform duration-500">
+<div class="portfolio-overlay absolute inset-0 bg-[#4D6A57] bg-opacity-80 flex flex-col justify-center items-center p-6 opacity-0 transition-opacity duration-300">
+<h3 class="text-white text-xl font-bold mb-2">Evergreen Studios</h3>
+<p class="text-white text-center mb-4">Complete brand identity design including logo, color palette, and brand guidelines</p>
+<button class="bg-white text-[#4D6A57] px-5 py-2 !rounded-button hover:bg-opacity-90 transition-all whitespace-nowrap">View Project</button>
+</div>
+</div>
+<!-- Portfolio Item 4 -->
+<div class="portfolio-item group rounded-lg overflow-hidden shadow-md relative">
+<img src="https://public.readdy.ai/ai/img_res/d0cb95ad26b3b50cf8b77942a40f0c04.jpg" alt="Data Dashboard Design" class="w-full h-64 object-cover object-top transition-transform duration-500">
+<div class="portfolio-overlay absolute inset-0 bg-[#4D6A57] bg-opacity-80 flex flex-col justify-center items-center p-6 opacity-0 transition-opacity duration-300">
+<h3 class="text-white text-xl font-bold mb-2">MetricsView</h3>
+<p class="text-white text-center mb-4">Interactive data dashboard design with advanced visualization techniques</p>
+<button class="bg-white text-[#4D6A57] px-5 py-2 !rounded-button hover:bg-opacity-90 transition-all whitespace-nowrap">View Project</button>
+</div>
+</div>
+<!-- Portfolio Item 5 -->
+<div class="portfolio-item group rounded-lg overflow-hidden shadow-md relative">
+<img src="https://public.readdy.ai/ai/img_res/9b27e2e26d037107b677d25e6e5ff190.jpg" alt="Landing Page Design" class="w-full h-64 object-cover object-top transition-transform duration-500">
+<div class="portfolio-overlay absolute inset-0 bg-[#4D6A57] bg-opacity-80 flex flex-col justify-center items-center p-6 opacity-0 transition-opacity duration-300">
+<h3 class="text-white text-xl font-bold mb-2">NexGen Technologies</h3>
+<p class="text-white text-center mb-4">Conversion-focused landing page design for SaaS product launch</p>
+<button class="bg-white text-[#4D6A57] px-5 py-2 !rounded-button hover:bg-opacity-90 transition-all whitespace-nowrap">View Project</button>
+</div>
+</div>
+<!-- Portfolio Item 6 -->
+<div class="portfolio-item group rounded-lg overflow-hidden shadow-md relative">
+<img src="https://public.readdy.ai/ai/img_res/7e12ac813bab36d7b185279559dc070d.jpg" alt="Social Media Campaign" class="w-full h-64 object-cover object-top transition-transform duration-500">
+<div class="portfolio-overlay absolute inset-0 bg-[#4D6A57] bg-opacity-80 flex flex-col justify-center items-center p-6 opacity-0 transition-opacity duration-300">
+<h3 class="text-white text-xl font-bold mb-2">Bloom Organics</h3>
+<p class="text-white text-center mb-4">Integrated social media campaign design with cohesive visual storytelling</p>
+<button class="bg-white text-[#4D6A57] px-5 py-2 !rounded-button hover:bg-opacity-90 transition-all whitespace-nowrap">View Project</button>
+</div>
+</div>
+</div>
+<div class="text-center mt-12">
+<button class="border-2 border-[#4D6A57] text-[#4D6A57] px-8 py-3 !rounded-button hover:bg-[#4D6A57] hover:text-white transition-all whitespace-nowrap text-lg font-medium">View All Projects</button>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section id="about" class="w-full py-20 bg-gray-50">
+<div class="container mx-auto px-8">
+<div class="flex flex-col lg:flex-row items-center gap-16">
+<div class="w-full lg:w-1/2">
+<img src="https://static.readdy.ai/image/4f318f13ec4a7d637a19f008589bb679/47f96ee4311232676691b27a4596131e.jpeg" alt="Canice - Designer" class="w-full h-auto rounded-lg shadow-lg object-cover object-top" style="object-position: top; max-height: 500px;">
+</div>
+<div class="w-full lg:w-1/2">
+<h2 class="text-3xl md:text-4xl font-bold mb-6">About Me</h2>
+<p class="text-lg text-gray-700 mb-6">I'm a passionate designer with over 8 years of experience creating meaningful digital experiences. My approach combines aesthetic sensibility with strategic thinking to deliver solutions that not only look beautiful but also solve real problems.</p>
+<p class="text-lg text-gray-700 mb-8">I specialize in UI/UX design, web development, and data visualization, bringing a holistic perspective to every project. My work is driven by a deep curiosity about how design can enhance human experiences and communicate complex ideas effectively.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center text-[#4D6A57] mr-4">
+<i class="ri-palette-line ri-lg"></i>
+</div>
+<div>
+<h3 class="font-semibold text-lg mb-2">Visual Design</h3>
+<p class="text-gray-600">Creating visually appealing interfaces with strong typography and color theory</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center text-[#4D6A57] mr-4">
+<i class="ri-user-smile-line ri-lg"></i>
+</div>
+<div>
+<h3 class="font-semibold text-lg mb-2">User Experience</h3>
+<p class="text-gray-600">Designing intuitive and accessible experiences that delight users</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center text-[#4D6A57] mr-4">
+<i class="ri-code-s-slash-line ri-lg"></i>
+</div>
+<div>
+<h3 class="font-semibold text-lg mb-2">Frontend Development</h3>
+<p class="text-gray-600">Translating designs into responsive, performant web experiences</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center text-[#4D6A57] mr-4">
+<i class="ri-bar-chart-line ri-lg"></i>
+</div>
+<div>
+<h3 class="font-semibold text-lg mb-2">Data Visualization</h3>
+<p class="text-gray-600">Making complex data accessible through thoughtful visualization</p>
+</div>
+</div>
+</div>
+<button class="bg-[#4D6A57] text-white px-8 py-3 !rounded-button hover:bg-opacity-90 transition-all whitespace-nowrap text-lg font-medium">Download Resume</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Skills Section -->
+<section class="w-full py-20 bg-white">
+<div class="container mx-auto px-8">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">My Skills</h2>
+<p class="text-lg text-gray-600 max-w-2xl mx-auto">A comprehensive toolkit that enables me to bring creative visions to life</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-white border border-gray-100">
+<div class="w-14 h-14 flex items-center justify-center bg-[#4D6A57] bg-opacity-20 rounded-full mb-6">
+<i class="ri-tools-line ri-xl text-[#4D6A57]"></i>
+</div>
+<h3 class="text-xl font-bold mb-4">Design Tools</h3>
+<ul class="space-y-3">
+<li class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center text-[#4D6A57] mr-3">
+<i class="ri-check-line"></i>
+</div>
+<span>Figma</span>
+</li>
+<li class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center text-[#4D6A57] mr-3">
+<i class="ri-check-line"></i>
+</div>
+<span>Adobe Creative Suite</span>
+</li>
+<li class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center text-[#4D6A57] mr-3">
+<i class="ri-check-line"></i>
+</div>
+<span>Sketch</span>
+</li>
+<li class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center text-[#4D6A57] mr-3">
+<i class="ri-check-line"></i>
+</div>
+<span>InVision</span>
+</li>
+<li class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center text-[#4D6A57] mr-3">
+<i class="ri-check-line"></i>
+</div>
+<span>Protopie</span>
+</li>
+</ul>
+</div>
+<div class="p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-white border border-gray-100">
+<div class="w-14 h-14 flex items-center justify-center bg-[#8BA989] bg-opacity-50 rounded-full mb-6">
+<i class="ri-code-s-slash-line ri-xl text-[#4D6A57]"></i>
+</div>
+<h3 class="text-xl font-bold mb-4">Development</h3>
+<ul class="space-y-3">
+<li class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center text-[#4D6A57] mr-3">
+<i class="ri-check-line"></i>
+</div>
+<span>HTML5 & CSS3</span>
+</li>
+<li class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center text-[#4D6A57] mr-3">
+<i class="ri-check-line"></i>
+</div>
+<span>JavaScript / TypeScript</span>
+</li>
+<li class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center text-[#4D6A57] mr-3">
+<i class="ri-check-line"></i>
+</div>
+<span>React & Vue.js</span>
+</li>
+<li class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center text-[#4D6A57] mr-3">
+<i class="ri-check-line"></i>
+</div>
+<span>Tailwind CSS</span>
+</li>
+<li class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center text-[#4D6A57] mr-3">
+<i class="ri-check-line"></i>
+</div>
+<span>Responsive Web Design</span>
+</li>
+</ul>
+</div>
+<div class="p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-white border border-gray-100">
+<div class="w-14 h-14 flex items-center justify-center bg-[#F2F1EC] bg-opacity-70 rounded-full mb-6">
+<i class="ri-bar-chart-line ri-xl text-[#4D6A57]"></i>
+</div>
+<h3 class="text-xl font-bold mb-4">Data & Analytics</h3>
+<ul class="space-y-3">
+<li class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center text-[#4D6A57] mr-3">
+<i class="ri-check-line"></i>
+</div>
+<span>D3.js</span>
+</li>
+<li class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center text-[#4D6A57] mr-3">
+<i class="ri-check-line"></i>
+</div>
+<span>Chart.js</span>
+</li>
+<li class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center text-[#4D6A57] mr-3">
+<i class="ri-check-line"></i>
+</div>
+<span>Tableau</span>
+</li>
+<li class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center text-[#4D6A57] mr-3">
+<i class="ri-check-line"></i>
+</div>
+<span>Google Analytics</span>
+</li>
+<li class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center text-[#4D6A57] mr-3">
+<i class="ri-check-line"></i>
+</div>
+<span>Data Storytelling</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="w-full py-20 bg-gradient-to-r from-[#F2F1EC] to-[#8BA989]">
+<div class="container mx-auto px-8">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Client Testimonials</h2>
+<p class="text-lg text-gray-600 max-w-2xl mx-auto">What my clients say about working with me</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="bg-white p-8 rounded-lg shadow-md">
+<div class="flex items-center mb-6">
+<div class="text-[#4D6A57]">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+<p class="text-gray-700 mb-6">"Canice transformed our outdated website into a modern, user-friendly platform that perfectly represents our brand. The attention to detail and thoughtful design choices have significantly improved our conversion rates."</p>
+<div class="flex items-center">
+<div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+<i class="ri-user-3-line text-gray-500"></i>
+</div>
+<div>
+<h4 class="font-semibold">Rebecca Thompson</h4>
+<p class="text-sm text-gray-500">Marketing Director, Elevate Solutions</p>
+</div>
+</div>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-md">
+<div class="flex items-center mb-6">
+<div class="text-[#4D6A57]">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+<p class="text-gray-700 mb-6">"Working with Canice on our app redesign was a game-changer. Their ability to balance aesthetics with functionality resulted in an interface our users love. The data visualizations they created have made complex information accessible to everyone."</p>
+<div class="flex items-center">
+<div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+<i class="ri-user-3-line text-gray-500"></i>
+</div>
+<div>
+<h4 class="font-semibold">Michael Chen</h4>
+<p class="text-sm text-gray-500">Product Manager, TechVision</p>
+</div>
+</div>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-md">
+<div class="flex items-center mb-6">
+<div class="text-[#4D6A57]">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+<p class="text-gray-700 mb-6">"Canice's brand identity work for our startup was exceptional. They captured our vision perfectly and delivered a cohesive visual system that has helped us stand out in a crowded market. Their collaborative approach made the process enjoyable."</p>
+<div class="flex items-center">
+<div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+<i class="ri-user-3-line text-gray-500"></i>
+</div>
+<div>
+<h4 class="font-semibold">Sophia Rodriguez</h4>
+<p class="text-sm text-gray-500">Founder, GreenLeaf Innovations</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section id="contact" class="w-full py-20 bg-white">
+<div class="container mx-auto px-8">
+<div class="max-w-5xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Let's Work Together</h2>
+<p class="text-lg text-gray-600 max-w-2xl mx-auto">Have a project in mind? Let's discuss how I can help bring your vision to life</p>
+</div>
+<div class="flex flex-col lg:flex-row gap-12">
+<div class="w-full">
+<div class="bg-gray-50 p-8 rounded-lg h-full">
+<h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+<div class="space-y-6">
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-[#4D6A57] bg-opacity-20 rounded-full mr-4">
+<i class="ri-mail-line text-[#4D6A57]"></i>
+</div>
+<div>
+<h4 class="font-semibold mb-1">Email</h4>
+<p class="text-gray-600">hello@canice.design</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-[#4D6A57] bg-opacity-20 rounded-full mr-4">
+<i class="ri-phone-line text-[#4D6A57]"></i>
+</div>
+<div>
+<h4 class="font-semibold mb-1">Phone</h4>
+<p class="text-gray-600">+1 (555) 123-4567</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-[#4D6A57] bg-opacity-20 rounded-full mr-4">
+<i class="ri-map-pin-line text-[#4D6A57]"></i>
+</div>
+<div>
+<h4 class="font-semibold mb-1">Location</h4>
+<p class="text-gray-600">San Francisco, California</p>
+</div>
+</div>
+</div>
+<div class="mt-10">
+<h4 class="font-semibold mb-4">Connect with me</h4>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-200 hover:bg-[#4D6A57] hover:text-white rounded-full transition-colors">
+<i class="ri-linkedin-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-200 hover:bg-[#4D6A57] hover:text-white rounded-full transition-colors">
+<i class="ri-dribbble-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-200 hover:bg-[#4D6A57] hover:text-white rounded-full transition-colors">
+<i class="ri-behance-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-200 hover:bg-[#4D6A57] hover:text-white rounded-full transition-colors">
+<i class="ri-instagram-fill"></i>
+</a>
+</div>
+</div>
+<div class="mt-10">
+<h4 class="font-semibold mb-4">Availability</h4>
+<p class="text-gray-600 mb-2">Currently available for freelance projects</p>
+<div class="flex items-center text-green-500">
+<div class="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+<span class="text-sm font-medium">Available for work</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-12 bg-gray-900 text-white">
+<div class="container mx-auto px-8">
+<div class="flex flex-col md:flex-row justify-between items-center mb-12">
+<div class="flex items-center mb-6 md:mb-0">
+<img src="https://static.readdy.ai/image/4f318f13ec4a7d637a19f008589bb679/352601aa53fb6c3cce8baf842f7d3cc0.png" alt="Canice" class="h-12">
+</div>
+<nav class="flex flex-wrap justify-center gap-8">
+<a href="#home" class="text-gray-300 hover:text-white transition-colors">Home</a>
+<a href="#about" class="text-gray-300 hover:text-white transition-colors">About</a>
+<a href="#portfolio" class="text-gray-300 hover:text-white transition-colors">Portfolio</a>
+<a href="#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a>
+</nav>
+</div>
+<hr class="border-gray-800 mb-8">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<div class="text-gray-400 text-sm mb-4 md:mb-0">
+© 2025 Canice. All rights reserved.
+</div>
+<div class="flex space-x-6">
+<a href="#" class="text-gray-400 hover:text-white transition-colors">
+<i class="ri-linkedin-fill"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors">
+<i class="ri-dribbble-fill"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors">
+<i class="ri-behance-fill"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors">
+<i class="ri-instagram-fill"></i>
+</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function(e) {
+e.preventDefault();
+document.querySelector(this.getAttribute('href')).scrollIntoView({
+behavior: 'smooth'
+});
+});
+});
+// Active nav link highlighting
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-link');
+window.addEventListener('scroll', () => {
+let current = '';
+sections.forEach(section => {
+const sectionTop = section.offsetTop;
+const sectionHeight = section.clientHeight;
+if (scrollY >= (sectionTop - 300)) {
+current = section.getAttribute('id');
+}
+});
+navLinks.forEach(link => {
+link.classList.remove('active');
+if (link.getAttribute('href') === `#${current}`) {
+link.classList.add('active');
+}
+});
+});
+</script>
 </body>
 </html>
